@@ -27,6 +27,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
+    "svg-sprite-loader": "^4.2.5",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -44,7 +45,8 @@
     "rules": {
       "semi": "off",
       "linebreak-style": "off",
-      "comma-dangle": "off"
+      "comma-dangle": "off",
+      "no-else-return": "off"
     }
   },
   "browserslist": [

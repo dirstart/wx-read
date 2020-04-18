@@ -7,12 +7,12 @@
     <use :xlink:href="iconName" />
   </svg>
 </template>
- 
+
 <script>
 export default {
-  name: 'SvgIcon',
+  name: 'IconSvg',
   props: {
-    iconClass: {
+    name: {
       type: String,
       required: true
     },
@@ -23,19 +23,19 @@ export default {
   },
   computed: {
     iconName() {
-      return `#icon-${this.iconClass}`;
+      return `#icon-${this.name}`;
     },
     svgClass() {
       if (this.className) {
-        return 'svg-icon ' + this.className;
+        return `svg-icon ${this.className}`;
       } else {
         return 'svg-icon';
       }
     },
     styleExternalIcon() {
       return {
-        mask: `url(${this.iconClass}) no-repeat 50% 50%`,
-        '-webkit-mask': `url(${this.iconClass}) no-repeat 50% 50%`
+        mask: `url(${this.name}) no-repeat 50% 50%`,
+        '-webkit-mask': `url(${this.name}) no-repeat 50% 50%`
       };
     }
   }
