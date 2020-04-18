@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+* * *
+
+* viewport - 用于静止用户对页面进行缩放。
