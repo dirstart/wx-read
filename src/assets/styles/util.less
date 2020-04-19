@@ -1,0 +1,11 @@
+@baseFontSize: 37.5;
+
+// px2rem 方法
+.px2rem (@name, @px) {
+  @{name}: @px / @baseFontSize * 1rem;
+}
+
+.bordered {
+  border-top: 1px solid #fff;
+  color: #fff;
+}
