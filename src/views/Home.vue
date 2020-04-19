@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <icon-svg name="bookmark"></icon-svg>
+    <icon-svg class="icon-bookmark" name="bookmark"></icon-svg>
     <div id="read"></div>
   </div>
 </template>
@@ -24,3 +24,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.icon-bookmark {
+  color: #089e8a;
+}
+</style>
