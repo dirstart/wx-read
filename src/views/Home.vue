@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url('../assets/styles/util.less');
+// @import url('../assets/styles/util.less');
 .test {
   margin-top: 10px;;
   background: #089e8a;
