@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -48,7 +49,9 @@
       "semi": "off",
       "linebreak-style": "off",
       "comma-dangle": "off",
-      "no-else-return": "off"
+      "no-else-return": "off",
+      "prefer-const": "warn",
+      "no-param-reassign": "warn"
     }
   },
   "browserslist": [
