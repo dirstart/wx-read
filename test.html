@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  /*  */
+  .box {
+    width: 100px;
+    background-color: #089e8a;
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    中文的测试测试试测试试测试试测试试测试试测试试测试试测试
+  </div>
+  <hr>
+  <a id="box" href="http://www.baidu.com">
+    英文的测试aaaaaaaaaaaaaaaaaaaaaa
+  </a>
+</body>
+<script>
+  const oBox = document.getElementById('box')
+  document.body.addEventListener('click', () => {
+    console.log('body click')
+  }, false)
+  oBox.addEventListener('click', (event) => {
+    console.log('haha', event)
+    event.preventDefault()
+    event.stopPropagation()
+  }, false)
+</script>
+</html>

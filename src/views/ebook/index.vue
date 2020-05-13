@@ -1,16 +1,19 @@
 <template>
   <div>
-    <!-- <ebook-reader></ebook-reader> -->
-    <router-view/>
+    <ebook-title></ebook-title>
+    <ebook-reader></ebook-reader>
+    <!-- <router-view/> -->
   </div>
 </template>
 
 <script>
-// import EbookReader from '../../components/ebook/ebook-reader.vue';
+import EbookReader from '../../components/ebook/ebook-reader.vue';
+import EbookTitle from '../../components/ebook/ebook-title.vue';
 
 export default {
   components: {
-    // EbookReader
+    EbookReader,
+    EbookTitle,
   },
   data() {
     return {};

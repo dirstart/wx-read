@@ -38,11 +38,37 @@ export default {
         height: window.innerHeight,
       })
       this.rendition.display()
+      this.rendition.on('touchstart', (event) => {
+        this.touchStartX = event.changedTouches[0].clientX
+        this.touchTime = event.timeStamp
+      })
+      this.rendition.on('touchend', (event) => {
+        const offsetX = event.changedTouches[0].clientX - this.touchStartX
+        const diffTime = event.timeStamp - this.touchTime
+        if (diffTime < 500 && offsetX > 40) {
+          this.prevPage()
+        } else if (diffTime < 500 && offsetX < -40) {
+          this.nextPage()
+        } else {
+          // 如果时间小于 500ms 则判定是要展示中间的内容
+          this.toggleTitleMenu()
+        }
+        // event.preventDefault()
+        event.stopPropagation()
+      })
     },
     nextPage() {
       if (this.rendition) {
         this.rendition.next()
       }
+    },
+    prevPage() {
+      if (this.rendition) {
+        this.rendition.prev()
+      }
+    },
+    toggleTitleMenu() {
+      console.log('show title')
     }
   }
 };

@@ -4,8 +4,69 @@
 .px2rem (@name, @px) {
   @{name}: @px / @baseFontSize * 1rem;
 }
+// less不如sass的地方之一了
+.transform-px2rem (@px) {
+  transform: translate3d(0, @px / @baseFontSize * 1rem, 0);
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 
 .bordered {
   border-top: 1px solid #fff;
   color: #fff;
+}
+
+// transition
+.slide-down-enter,
+.slide-down-leave-to {
+  transform: translate3d(0, -100%, 0)
+}
+.slide-down-enter-to,
+.slide-down-leave,
+.slide-up-enter-to,
+.slide-up-leave,
+.slide-right-enter-to,
+.slide-right-leave,
+.opacity-slide-up-enter-to,
+.opacity-slide-up-leave {
+  transform: translate3d(0, 0, 0)
+}
+
+.popup-slide-up-enter-to,
+.popup-slide-up-leave {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.slide-down-enter-active,
+.slide-down-leave-active,
+.slide-up-enter-active,
+.slide-up-leave-active,
+.fade-enter-active,
+.fade-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active,
+.popup-slide-up-enter-active,
+.popup-slide-up-leave-active {
+  transition: all .2s linear;
+}
+
+// .px2rem (@name, @px) {
+//   @{name}: @px / @baseFontSize * 1rem;
+// }
+.slide-up-enter,
+.slide-up-leave-to {
+  // sass写法
+  // transform: translate3d(0, px2rem(138), 0);
+  // less写法
+  .transform-px2rem(138)
 }

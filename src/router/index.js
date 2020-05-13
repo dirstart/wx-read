@@ -16,6 +16,11 @@ const routes = [
       {
         path: ':fileUrl',
         component: () => import('../components/ebook/ebook-reader.vue'),
+      },
+      // 如果没有后续的参数想要跳转 404，在嵌套路由需要配置 ''
+      {
+        path: '',
+        component: NotFound
       }
     ]
   },
