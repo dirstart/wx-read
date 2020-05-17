@@ -50,7 +50,7 @@
     flex-grow: 0;
     flex-shrink: 0;
     .px2rem(flex-basis, 37);
-    .right();
+    .flex-right();
   }
   .right {
     flex: 1;
@@ -60,7 +60,7 @@
       flex-grow: 0;
       flex-shrink: 0;
       .px2rem(flex-basis, 37);
-      .left();
+      .flex-left();
     }
   }
 }

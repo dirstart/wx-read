@@ -1,6 +1,5 @@
 <template>
   <div class="ebook-reader">
-    <button @click="nextPage">test</button>
     <div id="read"></div>
   </div>
 </template>
