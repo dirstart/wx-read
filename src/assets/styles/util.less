@@ -19,17 +19,28 @@
   justify-content: flex-start;
   align-items: center;
 }
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .bordered {
   border-top: 1px solid #fff;
   color: #fff;
 }
 
-// transition
+// transition：enter -> enter-active -> enter-to
+// transition：leave -> leave-active -> leave-to
+
+// x-enter：进入过渡的开始状态，元素被插入(例v-show="true")之前生效
 .slide-down-enter,
+// x-leave-to：离开过渡的结束状态，元素被删除(例v-show="false")之后生效
 .slide-down-leave-to {
   transform: translate3d(0, -100%, 0)
 }
+
+// 以下一般是过渡的结束状态
 .slide-down-enter-to,
 .slide-down-leave,
 .slide-up-enter-to,

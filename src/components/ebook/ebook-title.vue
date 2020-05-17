@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-down">
-    <div class="title-wrapper">
+    <div class="title-wrapper" v-show="menuVisible">
       <!-- 我怎么知道 -->
       <div class="left">
         <span class="icomoon icon-back"></span>
@@ -21,21 +21,16 @@
 </template>
 
 <script type="text/ecmascript-6">
-// import { ebookMixin } from '@/utils/mixin'
-// export default {
-//   mixins: [ebookMixin],
-//   methods: {
-//     back() {
-//       this.$router.go(-1)
-//     },
-//     gotoBookStore() {
-//       this.$router.push('/book-store')
-//     }
-//   }
-// }
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: {
+    ...mapGetters(['menuVisible'])
+  }
+}
 </script>
 
-<style lang="less" rel="stylesheet/scss" scoped>
+<style lang="less" rel="stylesheet/less" scoped>
 .title-wrapper {
   position: absolute;
   top: 0;

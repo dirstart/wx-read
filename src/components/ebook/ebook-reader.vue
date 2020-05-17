@@ -18,7 +18,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['filename'])
+    ...mapGetters(['filename', 'menuVisible'])
   },
   created() {},
   mounted() {
@@ -67,7 +67,7 @@ export default {
       }
     },
     toggleTitleMenu() {
-      console.log('show title')
+      this.$store.dispatch('setMenuVisible', !this.menuVisible)
     }
   }
 };
