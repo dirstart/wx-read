@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="wx-read">wx-read</h1>
+<h2 id="%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97">开发日志</h2>
+<ul>
+<li>
+<p>2020年4月29日 - 今天用了一个错误的 epub 文件，让我误以为是代码错误，折腾了很久。</p>
+<blockquote>
+<p>经验：以后需要多几个文件格式来对照；特别是这种没用过的第三方依赖（当然，并不是依赖的问题）；</p>
+</blockquote>
+<p><strong>测试是否是可用的 epub 文件工具：小新 pdf 阅读器。经验之谈</strong>
+!! 这也体现了测试的重要性。</p>
+</li>
+<li>
+<p>2020年5月16日 - 今天终于把教程原项目的icon之类的东西导入了；之前导入失败的时
+候像个无头的苍蝇。去理解font-face和iconmoon、iconfont的原理后，瞬间就解决了。去
+熟悉原理，牢记基础，大多数问题都能迎刃而解。</p>
+</li>
+<li>
+<p>2020年5月17日，发现昨天的问题解决的根本原因不是我想的那样。
+<a href="https://stackoverflow.com/questions/34133808/webpack-ots-parsing-error-loading-fonts#">这是一些网上和我有相同问题的：stackoverflow</a></p>
+<blockquote>
+<p>虽然他们没有帮我解决问题，但是给我提供了解决问题的思路。</p>
+</blockquote>
+<pre class="hljs"><code><div>@font-face {
+  font-family: 'icomoon';
+  src:  url('/fonts/icomoon.eot?eu5z6r');
+  src:  url('/fonts/icomoon.eot?eu5z6r#iefix') format('embedded-opentype'),
+    url('/fonts/icomoon.ttf?eu5z6r') format('truetype'),
+    url('/fonts/icomoon.woff?eu5z6r') format('woff'),
+    url('/fonts/icomoon.svg?eu5z6r#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+</div></code></pre>
+<p><strong>1、根本原因是我把它所需要的资源文件 fonts 放在了 assets 里面，但它引用的路径是 public 路径。</strong>
+<strong>2、而我昨天偶然的解决是因为：我试错的时候有一次偶然试对了（这个时候刚好也把 fonts 扔进了public），浏览器成功加载并且缓存了！！！然后我以为是我的另一个方法解决了，就删掉了public里的 fonts。实际上正确的解决方案仍是放进 public 里面。</strong></p>
+<p>但昨天的感想没有错hhh，真是巧合，牢记基础是快速彻底解决问题的必要因素；剩下的就交给运气了。
+vue-cli 的 public 里的文件，在 localhost 是能直接看到的：例如本项目的<code>http://localhost:8081/reset.css</code></p>
+</li>
+<li>
+<p>2020年5月17日 - 看教程有感</p>
+<blockquote>
+<p>刚看到教程说到“样式覆盖的问题”。最近刚好遇见这个，有感而发：在 vue-cli 中，你不写 scoped 其实很容易就造成样式覆盖了（捂脸，我在目前公司的商城的项目中被这个问题坑到两次了；特别是开发环境和测试还没问题，一上生产就发现了）。</p>
+</blockquote>
+<p><strong>vue的懒加载机制，可能会导致本地开发的时候样式被覆盖没有被发现哦！！！（当然，这不能怪懒加载。）</strong></p>
+</li>
+</ul>
+<hr>
+<h3 id="compiles-and-hot-reloads-for-development">Compiles and hot-reloads for development</h3>
+<pre class="hljs"><code><div>npm run serve
+</div></code></pre>
+<h3 id="compiles-and-minifies-for-production">Compiles and minifies for production</h3>
+<pre class="hljs"><code><div>npm run build
+</div></code></pre>
+<h3 id="lints-and-fixes-files">Lints and fixes files</h3>
+<pre class="hljs"><code><div>npm run lint
+</div></code></pre>
+<h3 id="customize-configuration">Customize configuration</h3>
+<p>See <a href="https://cli.vuejs.org/config/">Configuration Reference</a>.</p>
+<hr>
+<ul>
+<li>viewport - 用于静止用户对页面进行缩放。</li>
+</ul>
+
+</body>
+</html>

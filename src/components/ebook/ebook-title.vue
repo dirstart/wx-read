@@ -21,12 +21,12 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { mapGetters } from 'vuex'
+import { ebookMixins } from '../../utils/mixin'
 
 export default {
-  computed: {
-    ...mapGetters(['menuVisible'])
-  }
+  mixins: [
+    ebookMixins,
+  ]
 }
 </script>
 

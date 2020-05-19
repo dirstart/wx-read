@@ -18,12 +18,12 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { mapGetters } from 'vuex'
+import { ebookMixins } from '../../utils/mixin'
 
 export default {
-  computed: {
-    ...mapGetters(['menuVisible'])
-  }
+  mixins: [
+    ebookMixins,
+  ]
 }
 </script>
 
@@ -35,7 +35,7 @@ export default {
   z-index: 200;
   display: flex;
   width: 100%;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, .15);
+  box-shadow: 0 -4px 4px rgba(0, 0, 0, .15);
   .px2rem(height, 48);
   .px2rem(font-size, 22);
   .icon-wrapper {
