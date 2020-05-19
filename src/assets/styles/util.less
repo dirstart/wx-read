@@ -8,6 +8,10 @@
 .transform-px2rem (@px) {
   transform: translate3d(0, @px / @baseFontSize * 1rem, 0);
 }
+// px2rem 的 box-shadow 的写法
+.box-shadow-px2rem(@x: 0, @y: 0, @blur: 0, @color: #000) {
+  box-shadow: @x/@baseFontSize*1rem @y/@baseFontSize*1rem @blur/@baseFontSize*1rem @color;
+}
 
 .flex-right {
   display: flex;

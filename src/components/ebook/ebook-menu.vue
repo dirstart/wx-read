@@ -1,29 +1,42 @@
 <template>
-  <transition name="slide-up">
-    <div class="menu-wrapper" v-show="menuVisible">
-      <div class="icon-wrapper">
-        <span class="icomoon icon-menu"></span>
+  <div>
+    <transition name="slide-up">
+      <div class="menu-wrapper" v-show="menuVisible">
+        <div class="icon-wrapper">
+          <span class="icomoon icon-menu" @click="showSetting(4)"></span>
+        </div>
+        <div class="icon-wrapper">
+          <span class="icomoon icon-progress" @click="showSetting(1)"></span>
+        </div>
+        <div class="icon-wrapper">
+          <span class="icomoon icon-bright" @click="showSetting(2)"></span>
+        </div>
+        <div class="icon-wrapper">
+          <span class="icomoon icon-A" @click="showSetting(0)"></span>
+        </div>
       </div>
-      <div class="icon-wrapper">
-        <span class="icomoon icon-progress"></span>
-      </div>
-      <div class="icon-wrapper">
-        <span class="icomoon icon-bright"></span>
-      </div>
-      <div class="icon-wrapper">
-        <span class="icomoon icon-A"></span>
-      </div>
-    </div>
-  </transition>
+    </transition>
+    <!-- 设置字体的弹窗 -->
+    <ebook-setting-font></ebook-setting-font>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
 import { ebookMixins } from '../../utils/mixin'
+import ebookSettingFont from './ebook-setting-font.vue'
 
 export default {
+  components: {
+    ebookSettingFont,
+  },
   mixins: [
     ebookMixins,
-  ]
+  ],
+  methods: {
+    showSetting(key) {
+      this.setSettingVisible(key)
+    },
+  },
 }
 </script>
 

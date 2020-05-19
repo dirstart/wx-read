@@ -6,7 +6,6 @@
 
 <script>
 import Epub from 'epubjs';
-import { mapActions } from 'vuex'
 import { ebookMixins } from '../../utils/mixin'
 
 global.ePub = Epub
@@ -31,10 +30,6 @@ export default {
     })
   },
   methods: {
-    ...mapActions([
-      'setFilename',
-      'setMenuVisible',
-    ]),
     // 初始化epub电子书
     initEpub(url) {
       this.book = new Epub(url);
