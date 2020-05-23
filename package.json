@@ -52,7 +52,10 @@
       "comma-dangle": "off",
       "no-else-return": "off",
       "prefer-const": "warn",
-      "no-param-reassign": "warn"
+      "no-param-reassign": "warn",
+      "no-debugger": "warn",
+      "prefer-template": "off",
+      "no-plusplus": "off"
     }
   },
   "browserslist": [

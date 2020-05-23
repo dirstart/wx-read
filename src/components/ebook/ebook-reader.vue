@@ -13,8 +13,6 @@ export default {
   data() {
     return {
       msg: process.env.VUE_APP_NGINX,
-      book: {},
-      rendition: {},
     };
   },
   mixins: [
@@ -33,10 +31,14 @@ export default {
     // 初始化epub电子书
     initEpub(url) {
       this.book = new Epub(url);
+      this.setCurrentBook(this.book);
+      this.initRendition();
+    },
+    initRendition() {
       this.rendition = this.book.renderTo('read', {
         width: window.innerWidth,
         height: window.innerHeight,
-      })
+      });
       this.rendition.display()
       this.rendition.on('touchstart', (event) => {
         this.touchStartX = event.changedTouches[0].clientX
@@ -73,11 +75,15 @@ export default {
     },
     // 显隐顶部和底部菜单栏
     toggleTitleMenu() {
+      if (this.menuVisible) {
+        this.setSettingVisible(-1)
+      }
       this.setMenuVisible(!this.menuVisible)
     },
     // 隐藏菜单栏
     hideTitleMenu() {
       this.setMenuVisible(false)
+      this.setSettingVisible(-1)
     }
   }
 };

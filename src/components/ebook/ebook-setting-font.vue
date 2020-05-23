@@ -4,7 +4,7 @@
       <!-- 设置字体大小 -->
       <div class="setting-font-size">
         <!-- 减小字体 -->
-        <div class="preview" ref="left">
+        <div class="preview" ref="left" @click="subFontSize">
           <span :style="styleLeft" ref="leftText">A</span>
         </div>
         <!-- 拖动条 -->
@@ -12,6 +12,7 @@
           <div class="select-wrapper"
             v-for="(item, index) in fontSizeList"
             :key="index"
+            @click="setFontSize(item)"
             ref="item">
             <div class="line"></div>
             <div class="point-wrapper">
@@ -23,7 +24,7 @@
           </div>
         </div>
         <!-- 增大字体 -->
-        <div class="preview" ref="right">
+        <div class="preview" ref="right" @click="addFontSize">
           <span :style="styleRight" ref="rightText">A</span>
         </div>
       </div>
@@ -53,12 +54,22 @@ export default {
   },
   watch: {
     settingVisible(v) {
+      console.log('settingVisible', v);
       if (v === 0) {
         this.$nextTick(() => {
           this.genStyle()
         })
       }
+    },
+    fontSizeList: {
+      immediate: true,
+      handler(val) {
+        console.log('val', val)
+      }
     }
+    // fontSizeList(val) {
+    //   console.log('val', val)
+    // },
   },
   methods: {
     genStyle() {
@@ -75,8 +86,37 @@ export default {
         marginRight: `${(right + item - rightText) / 2}px`,
         fontSize: `${this.fontSizeList[this.fontSizeList.length - 1].fontSize}px`
       }
-    }
-  }
+    },
+    setFontSize(item) {
+      const { fontSize } = item
+      this.setDefaultFontSize(fontSize)
+      // 某个版本规定了要加 px
+      this.currentBook.rendition.themes.fontSize(fontSize + 'px')
+    },
+    addFontSize() {
+      const len = this.fontSizeList.length
+      const fontList = this.fontSizeList || []
+      if (!fontList.length) {
+        return
+      }
+      let curIndex = fontList.map((item) => item.fontSize).indexOf(this.defaultFontSize)
+      if (curIndex !== len - 1) {
+        ++curIndex
+      }
+      this.setFontSize(this.fontSizeList[curIndex])
+    },
+    subFontSize() {
+      const fontList = this.fontSizeList || []
+      if (!fontList.length) {
+        return
+      }
+      let curIndex = fontList.map((item) => item.fontSize).indexOf(this.defaultFontSize)
+      if (curIndex !== 0) {
+        --curIndex
+      }
+      this.setFontSize(this.fontSizeList[curIndex])
+    },
+  },
 }
 </script>
 

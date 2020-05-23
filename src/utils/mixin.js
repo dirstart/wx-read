@@ -10,6 +10,7 @@ export const ebookMixins = {
       'settingVisible',
       'defaultFontFamily',
       'defaultFontSize',
+      'currentBook',
     ])
   },
   data() {
@@ -24,6 +25,7 @@ export const ebookMixins = {
       'setSettingVisible',
       'setDefaultFontFamily',
       'setDefaultFontSize',
+      'setCurrentBook',
     ]),
   }
 }
