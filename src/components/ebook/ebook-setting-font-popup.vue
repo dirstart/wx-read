@@ -34,14 +34,13 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    setFontFamily(font) {
-      this.setDefaultFontFamily(font)
-      if (font === 'Default') {
-        this.currentBook.rendition.themes.font('宋体');
-      } else {
-        this.currentBook.rendition.themes.font(font);
-      }
-    },
+    // setFontFamily(font) {
+    //   if (font === 'Default') {
+    //     this.currentBook.rendition.themes.font('宋体');
+    //   } else {
+    //     this.currentBook.rendition.themes.font(font);
+    //   }
+    // },
   }
 };
 </script>
@@ -68,7 +67,7 @@ export default {
     }
   }
   .ebook-popup-list-wrapper {
-    .px2rem(height, 120);
+    .px2rem(height, 160);
     overflow: scroll;
     // .flex-center();
     .ebook-popup-item {
@@ -79,7 +78,7 @@ export default {
       }
       .flex-left();
       .px2rem(font-size, 12);
-      .px2rem(height, 30);
+      .px2rem(height, 40);
       .px2rem(padding-left, 12);
       .ebook-popup-item-check {
         position: absolute;

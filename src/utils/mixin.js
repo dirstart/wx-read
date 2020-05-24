@@ -1,5 +1,6 @@
 import { mapGetters, mapActions } from 'vuex'
 import { FONT_SIZE_LIST, FONT_FAMILY_LIST } from '@/utils/book'
+import * as Storage from '@/utils/localStorage'
 
 // eslint-disable-next-line import/prefer-default-export
 export const ebookMixins = {
@@ -30,5 +31,11 @@ export const ebookMixins = {
       'setCurrentBook',
       'setFontFamilyPopupVisible',
     ]),
+    setFontFamily(font) {
+      this.setDefaultFontFamily(font).then(() => {
+        // this.switchTheme()
+        Storage.saveFontFamily(this.filename, font)
+      })
+    },
   }
 }
