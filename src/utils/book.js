@@ -9,7 +9,7 @@ export const FONT_SIZE_LIST = [
 ]
 
 export const FONT_FAMILY_LIST = [
-  { font: 'Default' },
+  { font: '宋体' },
   { font: 'Cabin' },
   { font: 'Days One' },
   { font: 'Montserrat' },

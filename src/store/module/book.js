@@ -3,7 +3,7 @@ const book = {
     filename: '',
     menuVisible: false,
     settingVisible: -1, // -1：不显示，0：字号，2：进度条，3：目录
-    defaultFontFamily: 'Default',
+    defaultFontFamily: '宋体',
     defaultFontSize: 16,
     currentBook: null,
     fontFamilyPopupVisible: false,

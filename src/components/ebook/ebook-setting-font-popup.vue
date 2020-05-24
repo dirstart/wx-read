@@ -34,13 +34,6 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    // setFontFamily(font) {
-    //   if (font === 'Default') {
-    //     this.currentBook.rendition.themes.font('宋体');
-    //   } else {
-    //     this.currentBook.rendition.themes.font(font);
-    //   }
-    // },
   }
 };
 </script>

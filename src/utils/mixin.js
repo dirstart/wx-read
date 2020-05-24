@@ -32,6 +32,7 @@ export const ebookMixins = {
       'setFontFamilyPopupVisible',
     ]),
     setFontFamily(font) {
+      this.currentBook.rendition.themes.font(font)
       this.setDefaultFontFamily(font).then(() => {
         // this.switchTheme()
         Storage.saveFontFamily(this.filename, font)
