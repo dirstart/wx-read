@@ -38,7 +38,11 @@ export default {
   ],
   methods: {
     showSetting(key) {
-      this.setSettingVisible(key)
+      if (this.settingVisible === -1) {
+        this.setSettingVisible(key)
+      } else {
+        this.setSettingVisible(-1)
+      }
     },
   },
 }
