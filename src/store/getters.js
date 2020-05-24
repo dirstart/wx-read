@@ -5,4 +5,5 @@ export default {
   defaultFontFamily: (state) => state.book.defaultFontFamily,
   defaultFontSize: (state) => state.book.defaultFontSize,
   currentBook: (state) => state.book.currentBook,
+  fontFamilyPopupVisible: (state) => state.book.fontFamilyPopupVisible,
 }

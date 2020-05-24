@@ -116,6 +116,11 @@ export default {
       }
       this.setFontSize(this.fontSizeList[curIndex])
     },
+    showFontFamilySetting() {
+      this.setFontFamilyPopupVisible(true)
+      this.setMenuVisible(false)
+      this.setSettingVisible(-1)
+    },
   },
 }
 </script>

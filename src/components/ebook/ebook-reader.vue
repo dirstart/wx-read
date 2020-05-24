@@ -55,8 +55,18 @@ export default {
           // 如果时间小于 500ms 则判定是要展示中间的内容
           this.toggleTitleMenu()
         }
-        // event.preventDefault()
         event.stopPropagation()
+      })
+      // epubjs的字体设置hook
+      this.rendition.hooks.content.register((contents) => {
+        Promise.all([
+          contents.addStylesheet('/fonts-family/daysOne.css'),
+          contents.addStylesheet('/fonts-family/cabin.css'),
+          contents.addStylesheet('/fonts-family/montserrat.css'),
+          contents.addStylesheet('/fonts-family/tangerine.css')
+        ]).then((data) => {
+          console.log('加载字体完毕', data);
+        })
       })
     },
     // 下一页
@@ -78,12 +88,16 @@ export default {
       if (this.menuVisible) {
         this.setSettingVisible(-1)
       }
+      if (this.fontFamilyPopupVisible) {
+        this.setFontFamilyPopupVisible(false)
+      }
       this.setMenuVisible(!this.menuVisible)
     },
     // 隐藏菜单栏
     hideTitleMenu() {
       this.setMenuVisible(false)
       this.setSettingVisible(-1)
+      this.setFontFamilyPopupVisible(false)
     }
   }
 };

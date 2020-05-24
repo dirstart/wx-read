@@ -16,18 +16,22 @@
         </div>
       </div>
     </transition>
-    <!-- 设置字体的弹窗 -->
+    <!-- 设置字体大小 -->
     <ebook-setting-font></ebook-setting-font>
+    <!-- 设置字体格式 -->
+    <ebook-setting-font-popup></ebook-setting-font-popup>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import { ebookMixins } from '../../utils/mixin'
 import ebookSettingFont from './ebook-setting-font.vue'
+import ebookSettingFontPopup from './ebook-setting-font-popup.vue'
 
 export default {
   components: {
     ebookSettingFont,
+    ebookSettingFontPopup,
   },
   mixins: [
     ebookMixins,
