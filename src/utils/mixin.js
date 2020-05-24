@@ -38,5 +38,12 @@ export const ebookMixins = {
         Storage.saveFontFamily(this.filename, font)
       })
     },
+    setFontSize(size) {
+      // 某个版本规定了要加 px
+      this.currentBook.rendition.themes.fontSize(size + 'px')
+      this.setDefaultFontSize(size).then(() => {
+        Storage.saveFontSize(this.filename, size)
+      })
+    }
   }
 }

@@ -7,7 +7,12 @@
 <script>
 import Epub from 'epubjs';
 import { ebookMixins } from '../../utils/mixin'
-import { getFontFamily, saveFontFamily } from '../../utils/localStorage'
+import {
+  getFontFamily,
+  saveFontFamily,
+  getFontSize,
+  saveFontSize,
+} from '../../utils/localStorage'
 
 global.ePub = Epub
 export default {
@@ -41,12 +46,8 @@ export default {
         height: window.innerHeight,
       });
       this.rendition.display().then(() => {
-        let font = getFontFamily(this.filename)
-        if (!font) {
-          saveFontFamily(this.filename, this.defaultFontFamily)
-        } else {
-          this.setFontFamily(font)
-        }
+        this.initFontFamily()
+        this.initFontSize()
       })
       this.rendition.on('touchstart', (event) => {
         this.touchStartX = event.changedTouches[0].clientX
@@ -76,6 +77,23 @@ export default {
           console.log('加载字体完毕', data);
         })
       })
+    },
+    initFontFamily() {
+      const font = getFontFamily(this.filename)
+      if (!font) {
+        saveFontFamily(this.filename, this.defaultFontFamily)
+      } else {
+        this.setFontFamily(font)
+      }
+    },
+    initFontSize() {
+      let fontSize = getFontSize(this.filename)
+      if (!fontSize) {
+        fontSize = 16
+        saveFontSize(fontSize)
+      }
+
+      this.setFontSize(fontSize)
     },
     // 下一页
     nextPage() {

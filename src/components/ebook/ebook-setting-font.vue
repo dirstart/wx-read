@@ -12,7 +12,7 @@
           <div class="select-wrapper"
             v-for="(item, index) in fontSizeList"
             :key="index"
-            @click="setFontSize(item)"
+            @click="setFontSize(item.fontSize)"
             ref="item">
             <div class="line"></div>
             <div class="point-wrapper">
@@ -61,15 +61,6 @@ export default {
         })
       }
     },
-    fontSizeList: {
-      immediate: true,
-      handler(val) {
-        console.log('val', val)
-      }
-    }
-    // fontSizeList(val) {
-    //   console.log('val', val)
-    // },
   },
   methods: {
     genStyle() {
@@ -87,12 +78,6 @@ export default {
         fontSize: `${this.fontSizeList[this.fontSizeList.length - 1].fontSize}px`
       }
     },
-    setFontSize(item) {
-      const { fontSize } = item
-      this.setDefaultFontSize(fontSize)
-      // 某个版本规定了要加 px
-      this.currentBook.rendition.themes.fontSize(fontSize + 'px')
-    },
     addFontSize() {
       const len = this.fontSizeList.length
       const fontList = this.fontSizeList || []
@@ -103,7 +88,7 @@ export default {
       if (curIndex !== len - 1) {
         ++curIndex
       }
-      this.setFontSize(this.fontSizeList[curIndex])
+      this.setFontSize(this.fontSizeList[curIndex].fontSize)
     },
     subFontSize() {
       const fontList = this.fontSizeList || []
@@ -114,7 +99,7 @@ export default {
       if (curIndex !== 0) {
         --curIndex
       }
-      this.setFontSize(this.fontSizeList[curIndex])
+      this.setFontSize(this.fontSizeList[curIndex].fontSize)
     },
     showFontFamilySetting() {
       this.setFontFamilyPopupVisible(true)
