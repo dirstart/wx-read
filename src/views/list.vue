@@ -1,10 +1,12 @@
 <template>
   <div class="all-wrap">
     <m-fission-list :data="data"
+      ref="scroll"
       v-if="data.length > 0"
+      :pull-up-load="true"
     >
       <ul>
-        <li v-for="(item, index) in data" :key="index">
+        <li @click="test" v-for="(item, index) in data" :key="index">
           <img :src="`/images/${index + 1}.jpg`" alt="">
         </li>
       </ul>
@@ -26,8 +28,13 @@ export default {
   created() {
     this.data = [1, 2, 3, 4, 5, 6]
   },
-  mounted() {},
-  methods: {}
+  mounted() {
+  },
+  methods: {
+    test() {
+      console.log('11')
+    },
+  }
 };
 </script>
 
