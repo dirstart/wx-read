@@ -10,6 +10,7 @@
     "lint-fix": "eslint --fix --ext .js,.vue src"
   },
   "dependencies": {
+    "better-scroll": "^1.15.2",
     "core-js": "^3.6.4",
     "epubjs": "^0.3.85",
     "fastclick": "^1.0.6",
@@ -58,7 +59,11 @@
       "no-param-reassign": "warn",
       "no-debugger": "warn",
       "prefer-template": "off",
-      "no-plusplus": "off"
+      "no-plusplus": "off",
+      "no-underscore-dangle": "off",
+      "no-unused-expressions": "off",
+      "prefer-spread": "off",
+      "prefer-reset-params": "off"
     }
   },
   "browserslist": [

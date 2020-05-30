@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import NotFound from '../views/notFound.vue';
+import List from '../views/list.vue';
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,10 @@ const routes = [
         component: NotFound
       }
     ]
+  },
+  {
+    path: '/list',
+    component: List
   },
   {
     path: '*',
