@@ -79,7 +79,9 @@ export default {
         // 配置下拉刷新插件
         pullDownRefresh: {
           threshold: 70,
-          stop: 50,
+          // ！！！这个 stop非常关键，这是控制其悬停的高度
+          // 回弹停留的距离，也意味着这是你的 refresh 和 一些提示所能够拥有的高度
+          stop: 80,
         }
       })
 
@@ -117,6 +119,7 @@ export default {
     async finishPullDown() {
       await new Promise((resolve) => {
         setTimeout(() => {
+          // 让结构收回去其实是这个函数
           this.scroll.finishPullDown()
           resolve()
         }, 600)
@@ -155,10 +158,15 @@ export default {
 .pulldown-wrapper {
   position: absolute;
   width: 100%;
-  padding: 20px;
+  // 终于搞明白了，这里的高度不能是从 0 开始，要以拉到顶部的高度的地方为 0；
+  height: 80px;
+  top: -80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 20px;
   box-sizing: border-box;
-  transform: translateY(-100%) translateZ(0);
+  // transform: translateY(-100%) translateZ(0);
   text-align: center;
   color: #999;
 }
