@@ -75,6 +75,13 @@
       })
       ```
       **这里的 stop 即是我们想要的下拉刷新的视口高度。**
+  * 上拉加载和下拉刷新还是，有些差别的
+    > 可以不需要配置 stop 里的东西。不过最后需要 finishPullUp 的思路是类似的。
+      ```
+      this.scroll = new BScroll(this.$refs.wrapper, {
+        pullUpLoad: this.pullUpLoad,
+      })
+      ```
 
 
 * * *

@@ -3,23 +3,34 @@
     <!-- 内部的结构必须只有一个，否则会出现无法滚动的情况 -->
     <div class="only-one-element">
       <!-- 下拉刷新 -->
-      <slot name="pulldown-slot">
-        <div class="pulldown-wrapper">
-          <div v-show="beforePullDown">
-            <span>Pull Down and refresh</span>
-          </div>
-          <div v-show="!beforePullDown">
-            <div v-show="isPullingDown">
-              <span>Loading...</span>
-            </div>
-            <div v-show="!isPullingDown"><span>Refresh success</span></div>
-          </div>
+      <div class="pulldown-wrapper">
+        <div v-show="beforePullDown">
+          <span>Pull Down and refresh</span>
         </div>
-      </slot>
+        <div v-show="!beforePullDown">
+          <div v-show="isPullingDown">
+            <span>Loading...</span>
+          </div>
+          <div v-show="!isPullingDown"><span>Refresh success</span></div>
+        </div>
+      </div>
       <!-- 列表本身 -->
       <slot>
       </slot>
-      <!-- 上拉加载 -->
+      <!-- 上拉加载 + 到底了 -->
+      <div class="pullup-wrapper">
+        <div v-if="!isPullingUp">
+          <div v-if="!isPullUpEnd">
+            isPullUpEnd
+          </div>
+          <div v-else>
+            到底了
+          </div>
+        </div>
+        <div v-else>
+          loading
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -32,6 +43,9 @@ export default {
     return {
       beforePullDown: true,
       isPullingDown: false,
+      isPullingUp: false,
+      // 判断是否到底了
+      isPullUpEnd: false,
     };
   },
   props: {
@@ -55,6 +69,13 @@ export default {
     // 方案二：传 props 函数
     refreshData: {
       type: Function
+    },
+    // 上拉加载
+    loadMore: {
+      type: Function,
+      default() {
+        return []
+      }
     }
   },
   created() {},
@@ -82,7 +103,7 @@ export default {
           // ！！！这个 stop非常关键，这是控制其悬停的高度
           // 回弹停留的距离，也意味着这是你的 refresh 和 一些提示所能够拥有的高度
           stop: 80,
-        }
+        },
       })
 
       // 原生事件：滑动开始
@@ -91,6 +112,8 @@ export default {
       })
       // 插件事件：下拉刷新
       this.scroll.on('pullingDown', this.pullDownHandler)
+      // 插件事件：上拉加载
+      this.scroll.on('pullingUp', this.pullUpHandler)
       // 原生事件
       this.scroll.on('scroll', this.scrollHandler)
 
@@ -101,6 +124,7 @@ export default {
     // },
     // 下拉刷新：需要下拉到指定高度才会触发
     async pullDownHandler() {
+      this.isPullUpEnd = false
       this.beforePullDown = false
       this.isPullingDown = true
       // 等待数据返回
@@ -122,16 +146,37 @@ export default {
           // 让结构收回去其实是这个函数
           this.scroll.finishPullDown()
           resolve()
-        }, 600)
+        }, 0)
       })
       setTimeout(() => {
         this.beforePullDown = true
         this.scroll.refresh()
-      }, 800)
+      }, 300)
     },
-    // 获取数据后重置 better-scroll
-    refresh() {
-      this.scroll && this.scroll.refresh()
+    // 上拉加载
+    async pullUpHandler() {
+      if (this.isPullUpEnd) {
+        await this.finishPullUp()
+        return
+      }
+      this.isPullingUp = true
+      const { isPullUpEnd } = await this.loadMore()
+      this.isPullUpEnd = isPullUpEnd
+      await this.finishPullUp()
+    },
+    async finishPullUp() {
+      // 控制文字要停留多久，给一个视觉效果
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          this.scroll.finishPullUp()
+          resolve(true)
+        }, 0)
+        setTimeout(() => {
+          this.scroll.refresh()
+          this.isPullingUp = false
+        }, 300)
+      })
+      this.scroll && this.scroll.finishPullUp()
     },
     scrollTo() {
       // eslint-disable-next-line prefer-rest-params
@@ -168,6 +213,14 @@ export default {
   box-sizing: border-box;
   // transform: translateY(-100%) translateZ(0);
   text-align: center;
+  color: #999;
+}
+.pullup-wrapper {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
   color: #999;
 }
 </style>

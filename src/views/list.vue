@@ -3,6 +3,7 @@
     <m-fission-list :data="data"
       ref="scroll"
       :refresh-data="refreshData"
+      :load-more="loadMore"
       v-if="data.length > 0"
       :pull-up-load="true"
     >
@@ -27,7 +28,8 @@ export default {
     };
   },
   created() {
-    this.data = [1, 2, 3, 4, 5, 6]
+    this.data = [1, 2, 3, 4, 5]
+    // 23 % 5 = 4...3
   },
   mounted() {
   },
@@ -46,9 +48,26 @@ export default {
     refreshData() {
       return new Promise((resolve) => {
         setTimeout(() => {
-          console.log('refresh ok')
+          this.data = [1, 2, 3, 4, 5]
           resolve(true)
-        }, 2000)
+        }, 500)
+      })
+    },
+    loadMore() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('load more')
+          this.data = this.data.concat([1, 2, 3, 4, 5])
+          if (this.data.length === 20) {
+            resolve({
+              isPullUpEnd: true
+            })
+          } else {
+            resolve({
+              isEnd: false
+            })
+          }
+        }, 500)
       })
     }
   }
