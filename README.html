@@ -410,6 +410,37 @@ vue-cli 的 public 里的文件，在 localhost 是能直接看到的：例如�
 </blockquote>
 <p><strong>vue的懒加载机制，可能会导致本地开发的时候样式被覆盖没有被发现哦！！！（当然，这不能怪懒加载。）</strong></p>
 </li>
+<li>
+<p>2020年5月24日</p>
+<ul>
+<li>defaultFontSize：完全意义上的第一次进入 vuex 里面的默认值</li>
+<li>localStorage.fontSize：上一次进入后，再次进入网站的默认值</li>
+</ul>
+</li>
+<li>
+<p>2020年5月30日</p>
+<ul>
+<li>学习 better-scroll 最好先看文档，网上有把事件名大小写弄错的，更有很多跟不上新的版本的。</li>
+<li>先看文档，先看文档，先看文档。</li>
+<li>待添加：mockJS 的拦截功能</li>
+</ul>
+</li>
+<li>
+<p>2020年5月31日</p>
+<ul>
+<li>思考关于如何通过 emit 搭配 async/await 使用。<strong>发现不行</strong>。
+<blockquote>
+<p>替代方法一：emit 传 Promise-resolve 进去</p>
+</blockquote>
+<pre class="hljs"><code><div>// await new Promise((resolve) =&gt; {
+//   this.$emit('refreshData', resolve)
+// })
+</div></code></pre>
+方法二：直接在 props 传函数（网上说不推荐，不过看 elementUI 应该也是这么做的）<pre class="hljs"><code><div>await this.refreshData()
+</div></code></pre>
+</li>
+</ul>
+</li>
 </ul>
 <hr>
 <h3 id="compiles-and-hot-reloads-for-development">Compiles and hot-reloads for development</h3>

@@ -30,7 +30,7 @@ import BScroll from 'better-scroll'
 export default {
   data() {
     return {
-      beforePullDown: false,
+      beforePullDown: true,
       isPullingDown: false,
     };
   },
@@ -51,6 +51,10 @@ export default {
     pullDownRefresh: {
       type: Boolean,
       default: false,
+    },
+    // 方案二：传 props 函数
+    refreshData: {
+      type: Function
     }
   },
   created() {},
@@ -90,17 +94,26 @@ export default {
 
       return true
     },
-    scrollHandler(pos) {
-      console.log('pos.y', pos.y)
-    },
+    // scrollHandler(pos) {
+    //   console.log('pos.y', pos.y)
+    // },
+    // 下拉刷新：需要下拉到指定高度才会触发
     async pullDownHandler() {
       this.beforePullDown = false
       this.isPullingDown = true
-      // await this.requestData()
+      // 等待数据返回
+      // 同步方案一：emit使用异步：
+      // await new Promise((resolve) => {
+      //   this.$emit('refreshData', resolve)
+      // })
+      // 同步方案二：直接props传
+      await this.refreshData()
 
+      console.log('等待 emit 结束')
       this.isPullingDown = false
       await this.finishPullDown()
     },
+    // 结束刷新事件
     async finishPullDown() {
       await new Promise((resolve) => {
         setTimeout(() => {
@@ -113,6 +126,7 @@ export default {
         this.scroll.refresh()
       }, 800)
     },
+    // 获取数据后重置 better-scroll
     refresh() {
       this.scroll && this.scroll.refresh()
     },

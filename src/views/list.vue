@@ -2,6 +2,7 @@
   <div class="all-wrap">
     <m-fission-list :data="data"
       ref="scroll"
+      :refresh-data="refreshData"
       v-if="data.length > 0"
       :pull-up-load="true"
     >
@@ -34,6 +35,22 @@ export default {
     test() {
       console.log('11')
     },
+    // 方案一
+    // async refreshData(resolve) {
+    //   setTimeout(() => {
+    //     console.log('refresh ok')
+    //     resolve(true)
+    //   }, 2000)
+    // }
+    // 方案二
+    refreshData() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('refresh ok')
+          resolve(true)
+        }, 2000)
+      })
+    }
   }
 };
 </script>

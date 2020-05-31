@@ -47,6 +47,19 @@
   * 先看文档，先看文档，先看文档。
   * 待添加：mockJS 的拦截功能
 
+- 2020年5月31日
+  * 思考关于如何通过 emit 搭配 async/await 使用。**发现不行**。
+    > 替代方法一：emit 传 Promise-resolve 进去
+      ```
+      // await new Promise((resolve) => {
+      //   this.$emit('refreshData', resolve)
+      // })
+      ```
+      方法二：直接在 props 传函数（网上说不推荐，不过看 elementUI 应该也是这么做的）
+      ```
+      await this.refreshData()
+      ```
+
 
 * * *
 
