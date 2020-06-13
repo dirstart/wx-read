@@ -83,6 +83,9 @@
       })
       ```
 
+- 2020年6月13日
+  nginx遇见问题，不知道问什么 nginx 内的 temp 文件夹被删掉了
+  [查看此链接解决](https://blog.csdn.net/loveyour_1314/article/details/88552926)
 
 * * *
 

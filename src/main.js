@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import FastClick from 'fastclick'; // 引入插件
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -9,6 +10,7 @@ import '@/assets/styles/icon.css';
 import '@/assets/styles/global.less';
 
 Vue.use(myPlugins)
+FastClick.attach(document.body); // 使用 fastclick
 
 Vue.config.productionTip = false;
 

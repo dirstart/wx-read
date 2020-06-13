@@ -38,12 +38,16 @@ export default {
   ],
   methods: {
     showSetting(key) {
+      console.log('showSetting', new Date())
       if (this.settingVisible === -1) {
         this.setSettingVisible(key)
       } else {
         this.setSettingVisible(-1)
       }
     },
+    testTap() {
+      console.log('tap', new Date())
+    }
   },
 }
 </script>

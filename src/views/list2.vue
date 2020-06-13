@@ -28,7 +28,7 @@ export default {
     };
   },
   created() {
-    this.data = [1, 2, 3, 4, 5]
+    this.data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     // 23 % 5 = 4...3
   },
   mounted() {
@@ -48,7 +48,7 @@ export default {
     refreshData() {
       return new Promise((resolve) => {
         setTimeout(() => {
-          this.data = [1, 2, 3, 4, 5]
+          this.data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
           resolve(true)
         }, 500)
       })
@@ -57,8 +57,7 @@ export default {
       return new Promise((resolve) => {
         setTimeout(() => {
           console.log('load more')
-          this.data = this.data.concat([1, 2, 3, 4, 5])
-          if (this.data.length === 20) {
+          if (this.data.length === 15) {
             resolve({
               isPullUpEnd: true
             })
@@ -87,6 +86,7 @@ export default {
     font-size: 0;
     > img {
       width: 100%;
+      opacity: 1;
     }
   }
 }

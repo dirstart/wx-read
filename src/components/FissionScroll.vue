@@ -37,6 +37,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { debounce } from './utils'
 
 export default {
   data() {
@@ -104,6 +105,8 @@ export default {
           // 回弹停留的距离，也意味着这是你的 refresh 和 一些提示所能够拥有的高度
           stop: 80,
         },
+        // 鼠标滚轮生效
+        mouseWheel: true
       })
 
       // 原生事件：滑动开始
@@ -115,13 +118,16 @@ export default {
       // 插件事件：上拉加载
       this.scroll.on('pullingUp', this.pullUpHandler)
       // 原生事件
-      this.scroll.on('scroll', this.scrollHandler)
+      // () => {}
+      this.scroll.on('scroll', (pos) => {
+        debounce(this.scrollHandler.apply(this, [pos]))
+      })
 
       return true
     },
-    // scrollHandler(pos) {
-    //   console.log('pos.y', pos.y)
-    // },
+    scrollHandler(pos) {
+      console.log('pos.y', pos.y)
+    },
     // 下拉刷新：需要下拉到指定高度才会触发
     async pullDownHandler() {
       this.isPullUpEnd = false
@@ -134,7 +140,6 @@ export default {
       // })
       // 同步方案二：直接props传
       await this.refreshData()
-
       console.log('等待 emit 结束')
       this.isPullingDown = false
       await this.finishPullDown()

@@ -29,6 +29,8 @@ export default {
     const { fileUrl } = this.$route.params;
     const targetUrl = `http://${process.env.VUE_APP_NGINX}/epub/${fileUrl}.epub`;
 
+    console.log('test', targetUrl)
+
     this.setFilename(targetUrl).then(() => {
       this.initEpub(this.filename)
     })
