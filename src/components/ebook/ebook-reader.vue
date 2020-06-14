@@ -12,6 +12,8 @@ import {
   saveFontFamily,
   getFontSize,
   saveFontSize,
+  getTheme,
+  saveTheme,
 } from '../../utils/localStorage'
 
 global.ePub = Epub
@@ -50,6 +52,7 @@ export default {
       this.rendition.display().then(() => {
         this.initFontFamily()
         this.initFontSize()
+        this.initTheme()
       })
       this.rendition.on('touchstart', (event) => {
         this.touchStartX = event.changedTouches[0].clientX
@@ -96,6 +99,13 @@ export default {
       }
 
       this.setFontSize(fontSize)
+    },
+    initTheme() {
+      let theme = getTheme(this.filename)
+      if (!theme) {
+        theme = 'Default'
+        saveTheme(theme)
+      }
     },
     // 下一页
     nextPage() {

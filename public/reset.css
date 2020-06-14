@@ -248,3 +248,11 @@ body {
   overflow: hidden;
   font-family: 'PingFangSC-Light, PingFang SC', 'Arial';
 }
+
+/* [Intervention] Unable to preventDefault inside passive event 
+listener due to target being treated as passive. See <URL> */
+/* https://segmentfault.com/q/1010000007450207 */
+/* 为了解决以上的问题 */
+/* * {
+  touch-action: none;
+} */

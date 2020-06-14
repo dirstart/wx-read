@@ -7,6 +7,7 @@ const book = {
     defaultFontSize: 16,
     currentBook: null,
     fontFamilyPopupVisible: false,
+    defaultTheme: 'Default',
   },
   mutations: {
     SET_FILENAME: (state, filename) => {
@@ -21,6 +22,9 @@ const book = {
     SET_DEFAULTFONTFAMILY: (state, value) => {
       state.defaultFontFamily = value
     },
+    SET_DEFAULT_THEME: (state, value) => {
+      state.defaultTheme = value
+    },
     SET_DEFAULTFONTSIZE: (state, value) => {
       state.defaultFontSize = value
     },
@@ -30,12 +34,14 @@ const book = {
     SET_FONTFAMILYPOPUPVISIBLE: (state, value) => {
       state.fontFamilyPopupVisible = value
     },
+
   },
   actions: {
     setFilename: ({ commit }, filename) => commit('SET_FILENAME', filename),
     setMenuVisible: ({ commit }, visible) => commit('SET_MENUVISIBLE', visible),
     setSettingVisible: ({ commit }, visible) => commit('SET_SETTINGVISIBLE', visible),
     setDefaultFontFamily: ({ commit }, value) => commit('SET_DEFAULTFONTFAMILY', value),
+    setDefaultTheme: ({ commit }, value) => commit('SET_DEFAULT_THEME', value),
     setDefaultFontSize: ({ commit }, value) => commit('SET_DEFAULTFONTSIZE', value),
     setCurrentBook: ({ commit }, value) => commit('SET_CURRENT_BOOK', value),
     setFontFamilyPopupVisible: ({ commit }, value) => commit('SET_FONTFAMILYPOPUPVISIBLE', value),

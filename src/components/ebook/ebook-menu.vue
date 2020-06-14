@@ -3,13 +3,13 @@
     <transition name="slide-up">
       <div class="menu-wrapper" v-show="menuVisible">
         <div class="icon-wrapper">
-          <span class="icomoon icon-menu" @click="showSetting(4)"></span>
+          <span class="icomoon icon-menu" @click="showSetting(3)"></span>
         </div>
         <div class="icon-wrapper">
-          <span class="icomoon icon-progress" @click="showSetting(1)"></span>
+          <span class="icomoon icon-progress" @click="showSetting(2)"></span>
         </div>
         <div class="icon-wrapper">
-          <span class="icomoon icon-bright" @click="showSetting(2)"></span>
+          <span class="icomoon icon-bright" @click="showSetting(1)"></span>
         </div>
         <div class="icon-wrapper">
           <span class="icomoon icon-A" @click="showSetting(0)"></span>
@@ -20,6 +20,8 @@
     <ebook-setting-font></ebook-setting-font>
     <!-- 设置字体格式 -->
     <ebook-setting-font-popup></ebook-setting-font-popup>
+    <!-- 设置主题 -->
+    <ebook-setting-theme></ebook-setting-theme>
   </div>
 </template>
 
@@ -27,11 +29,13 @@
 import { ebookMixins } from '../../utils/mixin'
 import ebookSettingFont from './ebook-setting-font.vue'
 import ebookSettingFontPopup from './ebook-setting-font-popup.vue'
+import ebookSettingTheme from './ebook-setting-theme.vue'
 
 export default {
   components: {
     ebookSettingFont,
     ebookSettingFontPopup,
+    ebookSettingTheme,
   },
   mixins: [
     ebookMixins,
