@@ -104,8 +104,10 @@ export default {
       let theme = getTheme(this.filename)
       if (!theme) {
         theme = 'Default'
-        saveTheme(theme)
+        saveTheme(this.filename, theme)
       }
+
+      this.setDefaultTheme(theme)
     },
     // 下一页
     nextPage() {

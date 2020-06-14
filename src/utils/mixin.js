@@ -57,8 +57,7 @@ export const ebookMixins = {
     },
     setTheme(theme) {
       this.setDefaultTheme(theme).then(() => {
-        // this.switchTheme()
-        Storage.saveTheme(this.fileName, theme)
+        Storage.saveTheme(this.filename, theme)
       })
     },
   }
