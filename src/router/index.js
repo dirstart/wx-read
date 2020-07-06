@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import NotFound from '../views/notFound.vue';
 import List from '../views/list.vue';
 import List2 from '../views/list2.vue';
+import mobileTouchProblem from '../views/mobileTouchProblem.vue';
 
 Vue.use(VueRouter);
 
@@ -37,7 +38,11 @@ const routes = [
   {
     path: '*',
     component: NotFound
-  }
+  },
+  {
+    path: '/mobileTouchProblem',
+    component: mobileTouchProblem
+  },
 ];
 
 const router = new VueRouter({

@@ -57,6 +57,7 @@ export const ebookMixins = {
     },
     setTheme(theme) {
       this.setDefaultTheme(theme).then(() => {
+        this.currentBook.rendition.themes.select(theme)
         Storage.saveTheme(this.filename, theme)
       })
     },

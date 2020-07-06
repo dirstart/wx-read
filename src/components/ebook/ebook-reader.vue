@@ -101,13 +101,16 @@ export default {
       this.setFontSize(fontSize)
     },
     initTheme() {
-      let theme = getTheme(this.filename)
-      if (!theme) {
-        theme = 'Default'
-        saveTheme(this.filename, theme)
-      }
+      this.themeList.forEach((theme) => {
+        this.rendition.themes.register(theme.name, theme.style)
+      })
 
-      this.setDefaultTheme(theme)
+      let curTheme = getTheme(this.filename)
+      if (!curTheme) {
+        curTheme = this.defaultTheme
+        saveTheme(curTheme)
+      }
+      this.rendition.themes.select(curTheme)
     },
     // 下一页
     nextPage() {

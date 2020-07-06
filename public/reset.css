@@ -245,7 +245,8 @@ body {
   width: 100%;
   height: 100%;
   user-select: none;
-  overflow: hidden;
+  /* todo delete */
+  /* overflow: hidden; */
   font-family: 'PingFangSC-Light, PingFang SC', 'Arial';
 }
 
