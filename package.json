@@ -12,7 +12,7 @@
   "dependencies": {
     "better-scroll": "^1.15.2",
     "core-js": "^3.6.4",
-    "epubjs": "^0.3.85",
+    "epubjs": "^0.3.89",
     "fastclick": "^1.0.6",
     "mockjs": "^1.1.0",
     "vue": "^2.6.11",
